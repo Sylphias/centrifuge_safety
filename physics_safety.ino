@@ -1,4 +1,5 @@
 #include <Servo.h>
+//This code is to control the speed and safety of the Physics 1D Centrifuge. Can be re-used for other Electronic Speed Controller systems.
 
 Servo myservo;  // create servo object to control a servo
 
@@ -58,12 +59,12 @@ void loop()
     case 1:
       //Safety On
       int testval = safety_function(val, 80);
-      Serial.println(testval);
-      
+      Serial.println(testval);  
     break;
   }
-  //delay(1000);                           // waits for the servo to get there 
 } 
+
+// This function limits the maximum value that will be fed into the ESC.
 int safety_function(int val, int limit){
   if(val < limit){
     myservo.write(val);
